@@ -1,0 +1,31 @@
+@use "tailwindcss";
+
+$color-background-default: #ffffff;
+$color-foreground-default: #171717;
+$color-background-dark: #0a0a0a;
+$color-foreground-dark: #ededed;
+$font-stack-base: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+$font-stack-mono: var(--font-geist-mono), monospace;
+
+@mixin define-surface($background, $foreground) {
+  --background: #{$background};
+  --foreground: #{$foreground};
+}
+
+:root {
+  @include define-surface($color-background-default, $color-foreground-default);
+  --font-sans: #{nth($font-stack-base, 1)};
+  --font-mono: #{nth($font-stack-mono, 1)};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include define-surface($color-background-dark, $color-foreground-dark);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: $font-stack-base;
+}
