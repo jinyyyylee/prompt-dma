@@ -50,15 +50,7 @@ export function Header() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/next.svg"
-                alt="PromptHub 로고"
-                width={28}
-                height={28}
-                className="dark:invert"
-                priority
-              />
-              <span className="text-base font-semibold tracking-tight">PromptHub</span>
+              <span className="text-base font-semibold tracking-tight">PromptSpot</span>
             </Link>
           </div>
           <div className="order-3 w-full md:order-2 md:flex md:flex-1 md:justify-center">
@@ -74,7 +66,7 @@ export function Header() {
               </span>
             </label>
           </div>
-          <nav className="hidden items-center gap-4 lg:flex" aria-label="AI 카테고리">
+          {/* <nav className="hidden items-center gap-4 lg:flex" aria-label="AI 카테고리">
             <Link href="#" className="text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100">
               ChatGPT
             </Link>
@@ -87,7 +79,7 @@ export function Header() {
             <Link href="#" className="text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100">
               기타
             </Link>
-          </nav>
+          </nav> */}
           <div className="order-2 flex items-center gap-2 md:order-4">
             <Link
               href="#"
@@ -102,7 +94,7 @@ export function Header() {
               회원가입
             </Link>
             <Link
-              href="#"
+              href="/regist"
               className="rounded-lg border border-zinc-200 px-3 py-2 text-sm font-medium transition hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
             >
               프롬프트 등록
@@ -113,16 +105,6 @@ export function Header() {
             >
               내 프롬프트
             </Link>
-            <button
-              type="button"
-              aria-label={themeLabel}
-              aria-pressed={currentTheme === 'dark'}
-              onClick={handleToggleTheme}
-              className="rounded-lg border border-zinc-200 p-2 transition hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
-              title={themeLabel}
-            >
-              {themeIcon}
-            </button>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400">

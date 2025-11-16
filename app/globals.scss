@@ -91,3 +91,56 @@ body {
     transform: translateY(0);
   }
 }
+
+// 떠있는 카드 지그재그 애니메이션
+@keyframes float-zigzag-1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-zigzag-2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes float-zigzag-3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes float-zigzag-4 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+.float-card-1 {
+  animation: float-zigzag-1 4s ease-in-out infinite;
+}
+
+.float-card-2 {
+  animation: float-zigzag-2 5s ease-in-out infinite;
+}
+
+.float-card-3 {
+  animation: float-zigzag-3 4.5s ease-in-out infinite;
+}
+
+.float-card-4 {
+  animation: float-zigzag-4 5.5s ease-in-out infinite;
+}

@@ -108,6 +108,43 @@ export const HERO_MODELS = [
   { name: 'Stable Diffusion', badge: 'XL' },
 ];
 
+export const HERO_FLOATING_PROMPTS = [
+  {
+    icon: '🏔️',
+    title: '이미지 생성',
+    prompt: 'A majestic dragon soaring through clouds at sunset, photorealistic, 8K resolution, cinematic lighting, epic composition...',
+    price: '₩15,000',
+    position: { top: '0%', right: '0%' },
+    color: 'bg-gradient-to-br from-purple-900/40 to-purple-700/40',
+  },
+  {
+    icon: '✍️',
+    title: '콘텐츠 작성',
+    model: 'Claude',
+    prompt: '당신은 전문 마케팅 카피라이터입니다. 다음 제품에 대한 매력적인 광고 문구를 작성해주세요. 타겟 고객의 니즈를 분석하고...',
+    position: { top: '15%', left: '5%' },
+    color: ' bg-gradient-to-br from-blue-900/40 to-blue-700/40',
+  },
+  {
+    icon: '✨',
+    title: '창작',
+    prompt: '공상과학 단편소설을 작성해주세요. 배경은 2157년 화성 식민지이며, 주인공은 지구에서 이주한 생물학자입니다. 이야기는...',
+    model: 'GPT-4',
+    price: '₩6,000',
+    position: { bottom: '10%', left: '-10%' },
+    color: 'bg-gradient-to-br from-pink-900/40 to-pink-700/40',
+  },
+  {
+    icon: '⚙️',
+    title: '코드 자동화',
+    prompt: 'that automates data analysis from CSV files. The script should read the file, perform statistical analysis, generate visualizations...',
+    model: 'Claude',
+    price: '₩12,000',
+    position: { bottom: '5%', right: '-10%' },
+    color: 'bg-gradient-to-br from-amber-900/40 to-amber-700/40',
+  },
+];
+
 export const FILTER_OPTIONS = [
   '최신 등록',
   '판매량 높은 순',

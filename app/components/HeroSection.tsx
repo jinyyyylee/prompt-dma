@@ -1,9 +1,9 @@
-import Image from 'next/image';
+'use client';
+
 import Link from 'next/link';
-import { TRENDING_PROMPTS, HERO_TAGS, HERO_MODELS } from '../libs/constants';
+import { HERO_TAGS, HERO_MODELS, HERO_FLOATING_PROMPTS } from '../libs/constants';
 
 export function HeroSection() {
-  const heroCards = TRENDING_PROMPTS.slice(0, 3);
 
   return (
     <section className="relative overflow-hidden border-b border-zinc-200 bg-gradient-to-b from-white to-zinc-50 dark:border-zinc-800 dark:from-black dark:to-zinc-950">
@@ -24,7 +24,7 @@ export function HeroSection() {
                 인기 프롬프트 보기
               </Link>
               <Link
-                href="#"
+                href="/regist"
                 className="inline-flex items-center justify-center rounded-xl border border-zinc-200 px-4 py-2 text-sm font-semibold transition hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
               >
                 프롬프트 등록하기
@@ -61,25 +61,53 @@ export function HeroSection() {
               </div>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative hidden lg:block">
             <div className="pointer-events-none absolute -inset-10 -z-10 blur-3xl">
-              <div className="h-full w-full bg-gradient-to-tr from-fuchsia-500/20 via-cyan-400/20 to-blue-500/20" />
+              <div className="h-full w-full bg-gradient-to-tr from-purple-500/30 via-pink-500/20 to-fuchsia-500/30" />
             </div>
-            <div className="mx-auto grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-3 lg:max-w-none">
-              {heroCards.map((prompt) => (
+            <div className="relative h-[600px] w-full rounded-2xl bg-black">
+              <div
+                className="absolute inset-0 rounded-2xl"
+                style={{
+                  background: 'radial-gradient(circle at center, rgba(147, 51, 234, 0.25) 3%, rgba(88, 28, 135, 0) 70%, rgba(0, 0, 0, 0.95) 100%)',
+                }}
+              />
+              {/* 상단 중앙 원형 그라데이션 */}
+              <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-purple-500/60 blur-3xl" />
+              {/* 하단 우측 원형 그라데이션 */}
+              <div className="pointer-events-none absolute bottom-0 right-0 -z-10 h-[800px] w-[800px] rounded-full bg-blue-500/20 blur-3xl" />
+              {HERO_FLOATING_PROMPTS.map((card, index) => (
                 <div
-                  key={prompt.title}
-                  className="flex aspect-[4/5] flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-900"
+                  key={card.title}
+                  className={`absolute w-[300px] rounded-2xl border border-white/20 bg-black/60 p-4 shadow-2xl backdrop-blur-md float-card-${index + 1}`}
+                  style={{
+                    ...card.position,
+                    zIndex: index + 1,
+                  }}
                 >
-                  <div className="relative h-full w-full overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800">
-                    <Image
-                      src={prompt.thumbnail}
-                      alt={prompt.title}
-                      fill
-                      sizes="(min-width: 1024px) 18vw, (min-width: 640px) 25vw, 40vw"
-                      className="object-contain"
-                      loading="lazy"
-                    />
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${card.color} opacity-60`} />
+                  <div className="relative z-10 flex flex-col gap-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900/80 text-xl">
+                        {card.icon}
+                      </div>
+                      <h3 className="text-m font-semibold text-white">{card.title}</h3>
+                    </div>
+                    <p className="line-clamp-4 text-sm leading-relaxed text-white/90">
+                      {card.prompt}
+                    </p>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        {card.model && (
+                          <span className="rounded-full bg-zinc-800/80 px-2 py-1 text-[10px] font-medium text-zinc-300">
+                            {card.model}
+                          </span>
+                        )}
+                      </div>
+                      {card.price && (
+                        <span className="text-sm font-bold text-white">{card.price}</span>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
