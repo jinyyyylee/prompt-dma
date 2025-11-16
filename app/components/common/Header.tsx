@@ -82,7 +82,7 @@ export function Header() {
           </nav> */}
           <div className="order-2 flex items-center gap-2 md:order-4">
             <Link
-              href="#"
+              href="/auth/signin"
               className="hidden rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800 sm:block"
             >
               로그인
@@ -107,7 +107,7 @@ export function Header() {
             </Link>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400">
+        {/* <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400">
           <span className="font-semibold text-zinc-500 dark:text-zinc-300">빠른 필터</span>
           {FILTER_OPTIONS.map((filter) => (
             <button
@@ -118,7 +118,7 @@ export function Header() {
               {filter}
             </button>
           ))}
-        </div>
+        </div> */}
       </div>
     </header>
   );
