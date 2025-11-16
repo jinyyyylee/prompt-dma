@@ -82,13 +82,13 @@ export function Header() {
           </nav> */}
           <div className="order-2 flex items-center gap-2 md:order-4">
             <Link
-              href="/auth/signin"
+              href="/signin"
               className="hidden rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800 sm:block"
             >
               로그인
             </Link>
             <Link
-              href="#"
+              href="/regist"
               className="hidden rounded-lg bg-zinc-900 px-3 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-black dark:hover:bg-zinc-200 md:block"
             >
               회원가입
