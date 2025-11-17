@@ -37,26 +37,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Push to Harbor') {
-            steps {
-                container('buildah') {
-                    script {
-                        withCredentials([usernamePassword(
-                            credentialsId: 'harbor-credential',
-                            usernameVariable: 'HARBOR_USER',
-                            passwordVariable: 'HARBOR_PASS'
-                        )]) {
-                            sh """
-                                buildah login -u "$HARBOR_USER" -p "$HARBOR_PASS" harbor.mingi.kr
-                            """
-
-                            sh "buildah push ${REPOSITORY}:${GIT_HASH}"
-                            sh "buildah push ${REPOSITORY}:latest"
-                        }
-                    }
-                }
-            }
-        }
     }
 }
