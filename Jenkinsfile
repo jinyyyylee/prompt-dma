@@ -29,6 +29,7 @@ pipeline {
                         buildah bud \
                         --isolation chroot \
                         --layers \
+                        --no-cache \
                         -f Dockerfile \
                         -t ${REPOSITORY} .
                     '''
