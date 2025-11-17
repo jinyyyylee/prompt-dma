@@ -12,7 +12,7 @@ pipeline {
         REPOSITORY = "${REGISTRY}/${PROJECT}/${IMAGE_NAME}"
 
         GIT_HASH = sh(
-            script: 'git rev-parse --short HEAD'
+            script: 'git rev-parse --short HEAD',
             returnStdout: true
         ).trim()
     }
