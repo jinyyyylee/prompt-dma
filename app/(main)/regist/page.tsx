@@ -156,7 +156,7 @@ export default function RegistPage() {
   const subjects = formData.promptType === 'image' ? IMAGE_SUBJECTS : VIDEO_SUBJECTS;
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 transition-colors dark:bg-black dark:text-zinc-50">
+    <div className="regist-page min-h-screen bg-[#050505] text-white transition-colors">
       <Header />
       <main
         className={`mx-auto max-w-4xl px-4 transition-all duration-500 ${
@@ -175,7 +175,7 @@ export default function RegistPage() {
             </div>
 
             {/* 0. 프롬프트 타입 선택 (중앙 배치) */}
-            <section className="rounded-xl border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
+            <section className="form-card rounded-xl border border-zinc-200 bg-white p-6 shadow-lg">
               <h2 className="mb-6 text-center text-lg font-semibold">프롬프트 타입 선택</h2>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <button
@@ -221,7 +221,7 @@ export default function RegistPage() {
 
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* 0. 프롬프트 타입 선택 (위로 올라간 상태) */}
-              <section className="rounded-xl border border-zinc-200 bg-white p-6 transition-all duration-500 dark:border-zinc-800 dark:bg-zinc-900">
+              <section className="form-card rounded-xl border border-zinc-200 bg-white p-6 transition-all duration-500">
                 <h2 className="mb-6 text-lg font-semibold">프롬프트 타입 선택</h2>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <button
@@ -275,7 +275,7 @@ export default function RegistPage() {
               </section>
 
               {/* 1. 기본 정보 섹션 */}
-              <section className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <section className="form-card rounded-xl border border-zinc-200 bg-white p-6">
                 <h2 className="mb-6 text-lg font-semibold">1. 기본 정보 (필수)</h2>
                 <div className="space-y-6">
                   {/* 제목 */}
@@ -355,19 +355,33 @@ export default function RegistPage() {
                     <label htmlFor="aiTool" className="mb-2 block text-sm font-medium">
                       AI 도구 선택 <span className="text-red-500">*</span>
                     </label>
-                    <select
-                      id="aiTool"
-                      value={formData.aiTool}
-                      onChange={(e) => handleInputChange('aiTool', e.target.value)}
-                      className="w-full rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-zinc-300 focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-zinc-600 dark:focus:ring-zinc-700"
-                    >
-                      <option value="">선택하세요</option>
-                      {aiTools.map((tool) => (
-                        <option key={tool} value={tool}>
-                          {tool}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="aiTool"
+                        value={formData.aiTool}
+                        onChange={(e) => handleInputChange('aiTool', e.target.value)}
+                        className="w-full appearance-none rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 pr-10 text-sm text-white outline-none focus:border-white/40 focus:ring-0"
+                      >
+                        <option value="">선택하세요</option>
+                        {aiTools.map((tool) => (
+                          <option key={tool} value={tool}>
+                            {tool}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-white/60">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+                        </svg>
+                      </span>
+                    </div>
                     {errors.aiTool && <p className="mt-1 text-xs text-red-500">{errors.aiTool}</p>}
                   </div>
 
@@ -401,7 +415,7 @@ export default function RegistPage() {
               </section>
 
               {/* 2. 프롬프트 및 결과물 섹션 */}
-              <section className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <section className="form-card rounded-xl border border-zinc-200 bg-white p-6">
                 <h2 className="mb-6 text-lg font-semibold">2. 프롬프트 및 결과물 (핵심)</h2>
                 <div className="space-y-6">
                   {/* 원본 프롬프트 */}
@@ -603,19 +617,33 @@ export default function RegistPage() {
                     <label htmlFor="aspectRatio" className="mb-2 block text-sm font-medium">
                       종횡비 <span className="text-zinc-400">(선택)</span>
                     </label>
-                    <select
-                      id="aspectRatio"
-                      value={formData.aspectRatio}
-                      onChange={(e) => handleInputChange('aspectRatio', e.target.value)}
-                      className="w-full rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-zinc-300 focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-zinc-600 dark:focus:ring-zinc-700"
-                    >
-                      <option value="">선택하세요</option>
-                      {ASPECT_RATIOS.map((ratio) => (
-                        <option key={ratio.value} value={ratio.value}>
-                          {ratio.label}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="aspectRatio"
+                        value={formData.aspectRatio}
+                        onChange={(e) => handleInputChange('aspectRatio', e.target.value)}
+                        className="w-full appearance-none rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 pr-10 text-sm text-white outline-none focus:border-white/40 focus:ring-0"
+                      >
+                        <option value="">선택하세요</option>
+                        {ASPECT_RATIOS.map((ratio) => (
+                          <option key={ratio.value} value={ratio.value}>
+                            {ratio.label}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-white/60">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -640,6 +668,48 @@ export default function RegistPage() {
         )}
       </main>
       <Footer />
+      <style jsx>{`
+        .regist-page {
+          color: #f8fafc;
+        }
+        .regist-page .form-card {
+          border-color: rgba(255, 255, 255, 0.15);
+          background: rgba(255, 255, 255, 0.04);
+          color: #fff;
+          backdrop-filter: blur(12px);
+        }
+        .regist-page input:not([type='radio']),
+        .regist-page textarea,
+        .regist-page select {
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          color: #fff;
+        }
+        .regist-page input:not([type='radio']):focus,
+        .regist-page textarea:focus,
+        .regist-page select:focus {
+          border-color: rgba(255, 255, 255, 0.45);
+          box-shadow: none;
+          outline: none;
+        }
+        .regist-page input::placeholder,
+        .regist-page textarea::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+        }
+        .regist-page select option {
+          color: #111;
+        }
+        :global(.regist-page .text-zinc-600) {
+          color: rgba(248, 250, 252, 0.7) !important;
+        }
+        :global(.regist-page .text-zinc-500),
+        :global(.regist-page .text-zinc-400) {
+          color: rgba(248, 250, 252, 0.6) !important;
+        }
+        :global(.regist-page .form-card .border-zinc-200) {
+          border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+      `}</style>
     </div>
   );
 }

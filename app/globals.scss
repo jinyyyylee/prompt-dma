@@ -1,9 +1,7 @@
-@use "tailwindcss";
+﻿@use "tailwindcss";
 
-$color-background-default: #ffffff;
-$color-foreground-default: #171717;
-$color-background-dark: #0a0a0a;
-$color-foreground-dark: #ededed;
+$color-background-default: #050505;
+$color-foreground-default: #f8f8fb;
 $font-stack-base: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 $font-stack-mono: var(--font-geist-mono), monospace;
 
@@ -16,12 +14,6 @@ $font-stack-mono: var(--font-geist-mono), monospace;
   @include define-surface($color-background-default, $color-foreground-default);
   --font-sans: #{nth($font-stack-base, 1)};
   --font-mono: #{nth($font-stack-mono, 1)};
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    @include define-surface($color-background-dark, $color-foreground-dark);
-  }
 }
 
 body {
@@ -148,3 +140,4 @@ body {
 .float-card-4 {
   animation: float-zigzag-4 5.5s ease-in-out infinite;
 }
+
