@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            inheritFrom 'buildah'
+            inheritFrom 'docker'
         }
     }
 
@@ -24,17 +24,22 @@ pipeline {
     stages {
         stage('Build Nextjs') {
             steps {
-                container('buildah') {
-                    sh '''
-                        buildah bud \
-                        --isolation chroot \
-                        --layers \
-                        --no-cache \
-                        -f Dockerfile \
-                        -t ${REPOSITORY} .
-                    '''
-                    sh "buildah tag ${REPOSITORY} ${REPOSITORY}:${GIT_HASH}"
-                    sh "buildah tag ${REPOSITORY} ${REPOSITORY}:latest"
+                container('docker') {
+                    script {
+                        withCredentials([usernamePassword(
+                            credentialsId: 'harbor-credential',
+                            usernameVariable: 'HARBOR_USER',
+                            passwordVariable: 'HARBOR_PASS'
+                        )]) {
+                            sh '''
+                                docker buildx build \
+                                -t ${REPOSITORY}:${GIT_HASH} \
+                                -t ${REPOSITORY}:latest \
+                                --file ./Dockerfile \
+                                .
+                            '''
+                        }
+                    }
                 }
             }
         }
