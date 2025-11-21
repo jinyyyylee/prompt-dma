@@ -11,7 +11,7 @@ export function HeroSection() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="flex flex-col gap-4 lg:max-w-2xl lg:pr-8">
             <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-              세상 모든 AI 프롬프트를 한곳에서
+              세상 모든 AI 프롬프트를 한곳에Tj
             </h1>
             <p className="text-base text-zinc-600 dark:text-zinc-400">
               창의적인 프롬프트를 검색, 공유, 판매하세요.
