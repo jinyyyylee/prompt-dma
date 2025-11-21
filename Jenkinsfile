@@ -6,23 +6,30 @@ pipeline {
     }
 
     environment {
+        GIT_REPO = 'https://github.com/jinyyyylee/prompt-dma.git'
+        GIT_BRANCH = 'master'
+
         REGISTRY = 'harbor.mingi.kr'
         PROJECT = 'prompt-dma'
-        IMAGE_NAME = 'frontend'
+        IMAGE_NAME = 'frontend-dev'
         REPOSITORY = "${REGISTRY}/${PROJECT}/${IMAGE_NAME}"
-
-        GIT_HASH = sh(
-            script: 'git rev-parse --short HEAD',
-            returnStdout: true
-        ).trim()
-    }
-
-    tools {
-        nodejs 'node 24.11.0'
     }
 
     stages {
-        stage('Build Nextjs') {
+        stage('Checkout') {
+            steps {
+                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
+
+                script {
+                    env.GIT_HASH = sh(
+                        script: 'git rev-parse --short HEAD',
+                        returnStdout: true
+                    ).trim()
+                }
+            }
+        }
+
+        stage('Build & Push Docker Image') {
             steps {
                 container('docker') {
                     script {
